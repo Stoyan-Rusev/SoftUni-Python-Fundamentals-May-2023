@@ -1,0 +1,30 @@
+class Catalogue:
+    def __init__(self, name):
+        self.name = name
+        self.products = []
+        self.list_first_letter_products = []
+
+    def add_product(self, product_name: str):
+        self.products.append(product_name)
+
+    def get_by_letter(self, first_letter: str):
+        for product in self.products:
+            if product[0] == first_letter:
+                self.list_first_letter_products.append(product)
+        return self.list_first_letter_products
+
+    def __repr__(self):
+        returning_string = f"Items in the {self.name} catalogue:\n"
+        returning_string += "\n".join(sorted(self.products))
+        return returning_string
+
+
+catalogue = Catalogue("Furniture")
+catalogue.add_product("Sofa")
+catalogue.add_product("Mirror")
+catalogue.add_product("Desk")
+catalogue.add_product("Chair")
+catalogue.add_product("Carpet")
+print(catalogue.get_by_letter("C"))
+print(catalogue)
+
